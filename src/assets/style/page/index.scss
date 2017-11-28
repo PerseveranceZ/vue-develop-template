@@ -1,0 +1,172 @@
+html, body {
+  // color: $primary-font-color;
+}
+.layout {
+  min-width: 1000px;
+  background: #f3f3f3;
+  padding: 0;
+
+  .layout-content {
+    zoom: 1;
+    min-height: 800px;
+    .layout-left {
+      float: left;
+      position: fixed;
+      .layout-ceiling {
+        width: $layout-left-position;
+        height: 100px;
+        background: $primary-color;
+        overflow: hidden;
+        box-shadow: 1px 3px 4px rgba(88, 95, 94, 0.91);
+        .layout-logo {
+          width: auto;
+          color: white;
+          float: left;
+          font-size: 35px;
+          margin-left: 10px;
+          height: 80px;
+          margin-top: 10px;
+          margin-left: 30px;
+        }
+        .layout-ceiling-main {
+          margin-right: 15px;
+          padding-top: 20px;
+          a {
+            color: white;
+            font-size: 20px;
+          }
+        }
+      }
+      .layout-userinfo {
+          width: 240px;
+          margin-top: 20px;
+          min-height: 250px;
+          color: #444;
+          padding: 20px;
+          background: white;
+          box-shadow: 1px 1px 3px rgba(152,152,152,0.91);
+      }
+      .username {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .userinfo {
+        text-align: center;
+        min-height: 140px;
+        p {
+          color: white;
+        }
+      }
+      .userhandle {
+        text-align: center;
+      }
+    }
+    .layout-content-wapper {
+      zoom: 1;
+      width: 100%;
+      padding-left: $layout-left-position + 10;
+      box-sizing: border-box;
+      padding-right: 0px;
+      // margin-top: 10px;
+      .layout-content-main {
+        width: 100%;
+        word-wrap: break-word;
+        min-height: 600px;
+        .layout-copy {
+          text-align: center;
+          padding: 30px 0 20px;
+          color: #9ea7b4;
+        }
+      }
+    }
+  }
+}
+
+.ivu-table-cell {
+  padding: 18px;
+}
+
+.ivu-menu-vertical.ivu-menu-light:after {
+  background: none;
+}
+
+// detail full
+.detail-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+  color: white;
+  border-left: 5px solid $primary-color;
+  border-right: 0;
+  z-index: 2;
+  background-color: #474b4e;
+}
+
+.ivu-table .table-active-row td {
+  background-color: #ebf7ff !important;
+}
+
+.title {
+  padding-left: 5px;
+  border-left: 6px solid $primary-color;
+  border-bottom: 2px solid $primary-color;
+  display: inline-block;
+  padding-right: 30px;
+}
+.title-bottom {
+  padding-left: 5px;
+  color: #73767b;
+  border-left: 6px solid $primary-color;
+}
+
+.page-tab-container {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  display: inline-grid;
+}
+.navbar {
+  top: 10px;
+  width: $layout-left-position;
+  margin-right: -200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 525px;
+  box-shadow: 1px 1px 3px rgba(152, 152, 152, 0.91);
+}
+
+.common-filter {
+  .filter-title {
+    cursor: pointer;
+    z-index: 9;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 10px 20px;
+    background: white;
+    /* color: white; */
+    border-radius: 2px;
+    box-shadow: 0px 0px 5px #e4e5e7;
+  }
+  .filter-card-contanier {
+    z-index: 9;
+    position: fixed;
+    right: 0;
+    top: 52px;
+    padding: 10px;
+    .filter-card {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 5px #dddee1;
+      border-radius: 2px;
+      .ivu-card-body {
+        padding: 0px;
+      }
+      .filter-content {
+        padding: 16px;
+      }
+    }
+  }
+}
+
