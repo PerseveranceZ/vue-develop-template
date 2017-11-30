@@ -48,7 +48,7 @@
                 left: 0,
                 right: 0
             },
-            adsShow: false
+            adsShow: true
         }
     },
     computed: {

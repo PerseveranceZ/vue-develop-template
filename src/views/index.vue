@@ -1,7 +1,12 @@
 <template>
     <v-ons-page>
         <v-ons-toolbar>
-        <div class="center">{{ title }}</div>
+            <div class="left">
+                <v-ons-toolbar-button>
+                <v-ons-icon icon="ion-navicon, material: md-menu"></v-ons-icon>
+                </v-ons-toolbar-button>
+            </div>
+            <div class="center">{{ title }}</div>
         </v-ons-toolbar>
 
         <v-ons-tabbar swipeable position="auto"
