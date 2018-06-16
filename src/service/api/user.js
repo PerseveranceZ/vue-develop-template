@@ -5,7 +5,8 @@ export default [{
     path: '/api/info',
     mockPath: '/api/info',
     params: {
-        
+        a:1,
+        b:2
     }
 }, {
     name: 'test',

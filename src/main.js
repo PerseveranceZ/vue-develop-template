@@ -1,6 +1,5 @@
 import Vue from 'vue'
 
-window.GLOBAL = {}
 GLOBAL.vbus = new Vue()
 
 // import 'Components'// 全局组件注册

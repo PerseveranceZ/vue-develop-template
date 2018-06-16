@@ -20,13 +20,13 @@ class MakeApi {
     	config = {},
     	mock = false, 
     	debug = false,
-    	mockpath = ''
+    	mockBaseURL = ''
     }) {
     	Object.keys(config).map(namespace => {
     		this._apiSingleBuilder({
                 namespace, 
                 mock, 
-                mockpath, 
+                mockBaseURL, 
                 sep, 
                 debug, 
                 config: config[namespace]
@@ -39,13 +39,13 @@ class MakeApi {
     	config = {},
     	mock = false, 
     	debug = false,
-    	mockpath = ''
+    	mockBaseURL = ''
     }) {
         config.forEach( api => {
-            const {name, desc, params, method, path, localPath } = api
+            const {name, desc, params, method, path, mockPath } = api
             let apiname = `${namespace}${sep}${name}`,
-                url = mock ? localPath : path,
-                baseURL = mock && mockpath
+                url = mock ? mockPath : path,
+                baseURL = mock && mockBaseURL
 
             debug && assert(name, `${apiUrl} :接口name属性不能为空`)
             debug && assert(apiUrl.indexOf('/') === 0, `${apiUrl} :接口路径path，首字符应为/`)

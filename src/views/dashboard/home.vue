@@ -2,10 +2,13 @@
     <v-ons-page>
         <v-ons-list>
     
-        <v-ons-list-header>test</v-ons-list-header>
+        <v-ons-list-header>store</v-ons-list-header>
+        <v-ons-list-item>异步请求返回数据：{{userinfoGetter}}</v-ons-list-item>
+        <br />
+        <v-ons-list-header>api</v-ons-list-header>
         <v-ons-list-item @click="fetchMock" modifier="chevron" tappable>请求 $api['user/info']</v-ons-list-item>
         <br />
-
+        <v-ons-list-header>const</v-ons-list-header>
         <v-ons-list-item expandable :expanded.sync="isExpanded">
             查看 $const['OTHER/MENU']
             <pre v-highlightjs="JSON.stringify($const['OTHER/MENU'], null, 2)" class="expandable-content"><code class="json"></code></pre>
@@ -70,9 +73,13 @@
     </v-ons-page>
 </template>
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         name: 'home',
         props: ['myProp'],
+        computed: {
+            ...mapGetters(['userinfoGetter'])
+        },
         data() {
             return {
                 isExpanded: false,
