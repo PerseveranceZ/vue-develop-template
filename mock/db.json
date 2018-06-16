@@ -1,0 +1,16 @@
+{
+  "info": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "name": "Zero"
+    }
+  },
+  "test": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "city": "china"
+    }
+  }  
+}

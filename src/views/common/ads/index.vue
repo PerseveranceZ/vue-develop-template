@@ -13,9 +13,9 @@
             <span :index="dotIndex - 1" v-for="dotIndex in Object.keys(items).length" :key="dotIndex" style="cursor: pointer" @click="carouselIndex = dotIndex - 1">
                 {{ carouselIndex === dotIndex - 1 ? '\u25CF' : '\u25CB' }}
             </span>
+            <p>{{userinfoGetter}}</p>
         </div>
     </transition>
-
     <transition name="fade" enter-active-class="fadeInUp" leave-active-class="fadeOutDown">
         <div :style="dots" v-if="carouselIndex === allIndex">
             <v-ons-row>
@@ -30,36 +30,38 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     export default {
-    data() {
-        return {
-        carouselIndex: 0,
-            items: {
-                BLUE: '#085078',
-                DARK: '#373B44',
-                ORANGE: '#D38312'
-            },
-            dots: {
-                textAlign: 'center',
-                fontSize: '30px',
-                color: '#fff',
-                position: 'absolute',
-                bottom: '40px',
-                left: 0,
-                right: 0
-            },
-            adsShow: true
-        }
-    },
-    computed: {
-        allIndex () {
-            return Object.keys(this.items).length - 1
-        }
-    },
-    methods: {
-        close() {
-            this.adsShow = false
+        data() {
+            return {
+            carouselIndex: 0,
+                items: {
+                    BLUE: '#085078',
+                    DARK: '#373B44',
+                    ORANGE: '#D38312'
+                },
+                dots: {
+                    textAlign: 'center',
+                    fontSize: '30px',
+                    color: '#fff',
+                    position: 'absolute',
+                    bottom: '40px',
+                    left: 0,
+                    right: 0
+                },
+                adsShow: true
+            }
+        },
+        computed: {
+            ...mapGetters(['userinfoGetter']),
+            allIndex () {
+                return Object.keys(this.items).length - 1
+            }
+        },
+        methods: {
+            close() {
+                this.adsShow = false
+            }
         }
     }
-}
 </script>

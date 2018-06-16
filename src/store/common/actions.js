@@ -1,14 +1,7 @@
-import CONSTS from 'Service/consts/'
+import CONST from 'Plugins/const'
 export default {
     getUserInfo({ commit }) {
         commit('SET_USER_INFO', { userName: 'Zero' })
-        commit('SET_MENU', CONSTS['OTHER/MENU'])
+        commit('SET_MENU', CONST['OTHER/MENU'])
     }
-}
-
-const getters = {
-    menuOriginGetter: state => state.menuOrigin,
-    userinfoGetter: state => state.userinfo,
-    menuTreeGetter: state => state.menuTree,
-    menuMapGetter: state => state.menuMap
 }

@@ -3,7 +3,7 @@
         <v-ons-toolbar>
             <div class="left">
                 <v-ons-toolbar-button>
-                <v-ons-icon icon="ion-navicon, material: md-menu"></v-ons-icon>
+                <!-- <v-ons-icon icon="ion-navicon, material: md-menu"></v-ons-icon> -->
                 </v-ons-toolbar-button>
             </div>
             <div class="center">{{ title }}</div>
@@ -23,7 +23,6 @@
 
 import Home from './dashboard/home'
 import News from './dashboard/news'
-import Settings from './dashboard/settings'
 export default {
   data() {
     return {
@@ -44,12 +43,6 @@ export default {
           page: News,
           badge: 7,
           key: "newsPage"
-        },
-        {
-          icon: this.md() ? null : 'ion-ios-settings',
-          label: 'Settings',
-          page: Settings,
-          key: "settingsPage"
         }
       ]
     };

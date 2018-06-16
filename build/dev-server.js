@@ -11,7 +11,6 @@ var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
-
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -63,7 +62,20 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-app.use('/mock', express.static('./mock'))
+// 简易本地 mock
+// app.use('/mock', express.static('./mock'))
+
+// json-server
+var jsonServer = require('json-server')
+var apiServer = jsonServer.create()
+var apiRouter = jsonServer.router('./mock/db.json')
+var middlewares = jsonServer.defaults()
+
+apiServer.use(middlewares)
+apiServer.use('/', apiRouter)
+apiServer.listen(port + 1, function () {
+  console.log('JSON Server is running')
+})
 
 var uri = 'http://localhost:' + port
 

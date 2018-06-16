@@ -1,8 +1,8 @@
 export default [{
-    name: 'test',
+    name: 'userinfo',
     method: 'GET',
     desc: '测试服务处',
-    localPath: '/mock/test.json',
+    localPath: '/api/userinfo',
     path: '/tomato/common/showAllGroup',
     params: {
         a:1,
