@@ -20,6 +20,11 @@ export const AXIOS_DEFAULT_CONFIG = {
     headers: {}
 }
 
+// vuex 默认配置
+export const VUEX_DEFAULT_CONFIG = {
+    strict: process.env.NODE_ENV !== 'production'
+}
+
 // API 默认配置
 export const API_DEFAULT_CONFIG = {
     mockBaseURL: '',
@@ -38,9 +43,9 @@ export const CONST_DEFAULT_CONFIG = {
 
 
 // 还有一些方便开发的配置
-export const DEBUG_VUE_DEVTOOLS = true      // 开启请求参数打印
-export const DEBUG_VUE_DEBUG = true     // 开启响应参数打印
-export const DEBUG_VUE_TIP = true      // 监控记录打印
+export const DEBUG_VUE_DEVTOOLS = true          // vue devtools 开关
+export const DEBUG_VUE_DEBUG = true             // vue debug 开关
+export const DEBUG_VUE_TIP = true               // vue tip 开关
 
 
 export const CONSOLE_REQUEST_ENABLE = true      // 开启请求参数打印

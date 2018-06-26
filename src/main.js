@@ -8,7 +8,7 @@ import 'Directives' // 指令
 // 引入插件
 import router from 'Plugins/router'
 import inject from 'Plugins/inject'
-import store from 'Store'
+import store from 'Plugins/store'
 // 引入组件库及其组件库样式
 import VueOnsen from 'vue-onsenui'
 import 'onsenui/css/onsenui.css'

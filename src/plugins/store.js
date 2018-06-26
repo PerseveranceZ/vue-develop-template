@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {VUEX_DEFAULT_CONFIG} from 'Config'
+import commonStore from 'Service/store/common'
 
-Vue.use(Vuex);
-import common from 'Store/common';
+Vue.use(Vuex)
 
 export default new Vuex.Store({
-    ...common,
-    strict: process.env.NODE_ENV !== 'production'
+    ...commonStore,
+    ...VUEX_DEFAULT_CONFIG
 })
