@@ -47,8 +47,8 @@ class MakeApi {
                 url = mock ? mockPath : path,
                 baseURL = mock && mockBaseURL
 
-            debug && assert(name, `${apiUrl} :接口name属性不能为空`)
-            debug && assert(apiUrl.indexOf('/') === 0, `${apiUrl} :接口路径path，首字符应为/`)
+            debug && assert(name, `${url} :接口name属性不能为空`)
+            debug && assert(url.indexOf('/') === 0, `${url} :接口路径path，首字符应为/`)
 
             Object.defineProperty(this.api, `${namespace}${sep}${name}`, {
                 value(outerParams, outerOptions) {
