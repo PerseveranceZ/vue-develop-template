@@ -770,16 +770,7 @@ api['order/info']({
 
 ```
 
-**当然对于`运行效率要求高`的项目中，`避免内存使用率过大`，我们把命名空间支持成驼峰，直接用解构的方式引入使用，最终利用 `webpack` 的 `tree-shaking` 减少打包体积即可。**
-
-```js
-import {orderInfo as getOrderInfo} from 'Plugins/api'
-
-getOrderInfo({
-    a: 1,
-    b: 2
-})
-```
+当然对于`运行效率要求高`的项目中，`避免内存使用率过大`，我们需要改造 API，用解构的方式引入使用，最终利用 `webpack` 的 `tree-shaking` 减少打包体积。[几个简单的思路](https://github.com/PerseveranceZ/vue-develop-template/issues/4)
 
 > 一般来说，多人协作时候大家都可以先看 `api` 是否有对应接口，当业务量上来的时候，也肯定会有人出现找不到，或者找起来比较费劲，这时候我们完全可以在 请求拦截器中，把当前请求的 `url` 和 `api` 中的请求做下判断，如果有重复接口请求路径，则提醒开发者已经配置相关请求，根据情况是否进行二次配置即可。
 
