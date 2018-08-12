@@ -19,18 +19,13 @@ export default {
     methods: {
         ...mapActions(['getUserInfo']),
         bindEvent() {
-            GLOBAL.vbus.$on('ajax_handle_error', (resData) => {
-                if(!!resData.config.noShowDefaultError) return
-                this.$store.commit('SET_TO_LOGIN_PATH', this.$route.path)
-                this.$store.commit('SET_TO_LOGIN', true)
-                return
-                
+            GLOBAL.vbus.$on('business.response.incorrect', (resData) => {
+                // ... code 不为 0，业务不正确处理
             })
-            GLOBAL.vbus.$on('request_error', (resData) => {
+            // 自行触发
+            GLOBAL.vbus.$on('ajax.request.error', (resData) => {
             })
-            GLOBAL.vbus.$on('response_error', (resData) => {
-            })
-            GLOBAL.vbus.$on('scrollToTop', (resData) => {
+            GLOBAL.vbus.$on('ajax.response.error', (resData) => {
             })
         },
         init() {
