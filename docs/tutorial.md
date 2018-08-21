@@ -635,6 +635,8 @@ service
 - 得需要命名空间。
 - 通过全局配置开启调试模式。
 - 通过全局配置来控制走本地 mock 还是线上接口等。
+- 通过在接口定义中，设置mockEnable来控制单个接口访问mock。
+- 在接口编译过程中，判断process.env.NODE_ENV，当为生产环境时，自动使用线上接口。
 
 定制好功能，开始编写简单的 `plugins/api.js` 插件：
 
@@ -685,28 +687,22 @@ class MakeApi {
     	mockBaseURL = ''
     }) {
         config.forEach( api => {
-            const {name, desc, params, method, path, mockPath } = api
-            let apiname = `${namespace}${sep}${name}`,// 命名空间
-                url = mock ? mockPath : path,//控制走 mock 还是线上
-                baseURL = mock && mockBaseURL
+            const {name, desc, params, method, mockEnable, path, mockPath } = api
+            const isMock = process.env.NODE_ENV === 'production' ? false : mock || mockEnable
+            const url = isMock ? mockPath : path
             
             // 通过全局配置开启调试模式。
-            debug && console.info(`调用服务层接口${apiname}，接口描述为${desc}`)
-            debug && assert(name, `${apiUrl} :接口name属性不能为空`)
-            debug && assert(apiUrl.indexOf('/') === 0, `${apiUrl} :接口路径path，首字符应为/`)
+            debug && assert(name, `${url} :接口name属性不能为空`)
+            debug && assert(apiUrl.indexOf('/') === 0, `${url} :接口路径path，首字符应为/`)
 
             Object.defineProperty(this.api, `${namespace}${sep}${name}`, {
                 value(outerParams, outerOptions) {
                 
                     // 请求参数自动截取。
                     // 请求参数不穿则发送默认配置参数。
-                    let _data = _isEmpty(outerParams) ? params : _pick(_assign({}, params, outerParams), Object.keys(params))
-                    return axios(_normoalize(_assign({
-                        url,
-                        desc,
-                        baseURL,
-                        method
-                    }, outerOptions), _data))
+                    const _data = _isEmpty(outerParams) ? params : _pick(_assign({}, params, outerParams), Object.keys(params))
+                    const _options = isMock ? {url, desc, baseURL, method} : {url, desc, method}
+                    return axios(_normoalize(_assign(_options, outerOptions), _data))
                 }
             })      
         })

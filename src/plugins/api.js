@@ -42,23 +42,19 @@ class MakeApi {
     	mockBaseURL = ''
     }) {
         config.forEach( api => {
-            const {name, desc, params, method, path, mockPath } = api
-            let apiname = `${namespace}${sep}${name}`,
-                url = mock ? mockPath : path,
-                baseURL = mock && mockBaseURL
+            const {name, desc, params, method, mockEnable, path, mockPath } = api
+            const isMock = process.env.NODE_ENV === 'production' ? false : mock || mockEnable
+            const url = isMock ? mockPath : path
+            const baseURL = isMock && mockBaseURL
 
             debug && assert(name, `${url} :接口name属性不能为空`)
             debug && assert(url.indexOf('/') === 0, `${url} :接口路径path，首字符应为/`)
 
             Object.defineProperty(this.api, `${namespace}${sep}${name}`, {
                 value(outerParams, outerOptions) {
-                    let _data = _isEmpty(outerParams) ? params : _pick(_assign({}, params, outerParams), Object.keys(params))
-                    return axios(_normoalize(_assign({
-                        url,
-                        desc,
-                        baseURL,
-                        method
-                    }, outerOptions), _data))
+                    const _data = _isEmpty(outerParams) ? params : _pick(_assign({}, params, outerParams), Object.keys(params))
+                    const _options = isMock ? {url, desc, baseURL, method} : {url, desc, method}
+                    return axios(_normoalize(_assign(_options, outerOptions), _data))
                 }
             })      
         })
