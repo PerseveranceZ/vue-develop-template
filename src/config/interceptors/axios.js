@@ -1,7 +1,7 @@
 import {CONSOLE_REQUEST_ENABLE, CONSOLE_RESPONSE_ENABLE} from '../index.js'
 
 export function requestSuccessFunc (requestObj) {
-    CONSOLE_REQUEST_ENABLE && console.info('requestInterceptorFunc', `url: ${requestObj.url}`, requestObj)
+    CONSOLE_REQUEST_ENABLE && console.warn('【request-interceptor】', `url: ${requestObj.url}`, requestObj)
     // 自定义请求拦截逻辑，可以处理权限，请求发送监控等
     // ...
     

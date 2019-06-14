@@ -11,7 +11,7 @@
         <v-ons-list-header>const</v-ons-list-header>
         <v-ons-list-item expandable :expanded.sync="isExpanded">
             查看 $const['OTHER/MENU']
-            <pre v-highlightjs="JSON.stringify($const['OTHER/MENU'], null, 2)" class="expandable-content"><code class="json"></code></pre>
+            <pre v-highlight="JSON.stringify($const['OTHER/MENU'], null, 2)" class="expandable-content"><code class="json"></code></pre>
         </v-ons-list-item>
 
        <!--  <v-ons-list-header>Tappable / Ripple</v-ons-list-header>

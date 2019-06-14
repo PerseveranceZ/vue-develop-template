@@ -37,11 +37,6 @@ class MakeConst {
     }
 }
 
-console.log(new MakeConst({
-    config: CONST_CONFIG,
-    ...CONST_DEFAULT_CONFIG
-})['const'])
-
 export default new MakeConst({
 	config: CONST_CONFIG,
 	...CONST_DEFAULT_CONFIG

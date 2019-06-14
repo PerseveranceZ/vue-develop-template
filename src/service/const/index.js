@@ -1,5 +1,13 @@
-import other from './other'
+import { importAll } from '@/utils/common.js'
 
-export default {
-    other
-}
+const routeModules = importAll(
+    require.context('./modules', false, /\.js$/)
+)
+
+let configs = {}
+routeModules.forEach(({camelModuleName, module}) => {
+	configs[camelModuleName] = module
+})
+
+
+export default configs

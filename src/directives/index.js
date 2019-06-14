@@ -1,6 +1,11 @@
 import Vue from 'vue'
-import highlightjs from'./highlight'
-import clickoutside from './clickoutside'
+import { importAll } from '@/utils/common.js'
 
-Vue.directive('highlightjs', highlightjs)
-Vue.directive('clickoutside', clickoutside)
+const routeModules = importAll(
+    require.context('./modules', false, /\.js$/)
+)
+
+routeModules.forEach(({camelModuleName, module}) => {
+	Vue.directive(camelModuleName, module)
+})
+

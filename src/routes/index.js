@@ -1,5 +1,13 @@
-import car from './car'
+import { importAll } from '@/utils/common.js'
 
-export default [
-	...car
-]
+const routeModules = importAll(
+    require.context('@/routes/modules', false, /\.js$/)
+)
+const routes = routeModules.reduce(
+    (finallRoutes, routerModule) =>
+        finallRoutes.concat(routerModule.module),
+    []
+)
+
+
+export default routes
